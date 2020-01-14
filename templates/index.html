@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DIAT</title>
+    <link rel="icon" href="static/img/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&display=swap">
+    <link rel="stylesheet" href="static/css/index.css">
+  </head>
+
+  <body>
+    <section class="hero is-small is-primary is-bold">
+      <div class="hero-body">
+        <h1 class="title">D I A T</h1>
+        <h1 class="subtitle">Descriptive Image Annotation Tool</h1>
+      </div>
+    </section>
+
+    <section class="custom-main">
+      <div class="columns is-gapless">
+        <div class="column is-4">
+          <div class="panel is-dark is-shadowless">
+            <div class="panel-heading is-radiusless has-text-centered">
+              <button class="button is-radiusless has-text-link custom-button">
+                <span class="icon"><i class="fas fa-image fa-2x"></i></span>
+              </button>
+            </div>
+            <div class="custom-box">
+              <figure class="image has-background-dark">
+                <img id="image" src="static/img/placeholder.jpg">
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="panel is-dark">
+            <div class="panel-heading is-radiusless has-text-centered">
+              <button class="button is-radiusless has-text-primary custom-button" id="button-database">
+                <span class="icon"><i class="fas fa-database fa-2x"></i></span>
+              </button>
+              <button class="button is-radiusless has-text-primary custom-button" id="button-next">
+                <span class="icon"><i class="fas fa-arrow-circle-right fa-2x"></i></span>
+              </button>
+              <button class="button is-radiusless has-text-primary custom-button" id="button-save">
+                <span class="icon"><i class="fas fa-save fa-2x"></i></span>
+              </button>
+              <button class="button is-radiusless has-text-primary custom-button" id="button-delete">
+                <span class="icon"><i class="fas fa-trash fa-2x"></i></span>
+              </button>
+              <button class="button is-radiusless has-text-primary custom-button" id="button-options">
+                <span class="icon"><i class="fas fa-cog fa-2x"></i></span>
+              </button>
+            </div>
+            <div class="panel-tabs">
+              <a class="custom-tab-link">General</a>
+              <a class="custom-tab-link">Head & Body</a>
+              <a class="custom-tab-link">Hands</a>
+              <a class="custom-tab-link">Legs</a>
+            </div>
+            <div class="custom-tab-container">
+              <div class="custom-tab-content custom-tab-general">
+                <div class="panel">
+                  <div class="panel-heading is-radiusless has-background-light">
+                    <p class="subtitle">Sex</p>
+                  </div>
+                  <div class="columns is-gapless is-mobile">
+                    <div class="column">
+                      <input type="radio" name="sex" id="sex-male">
+                      <label for="sex-male">Male</label>
+                    </div>
+                    <div class="column">
+                      <input type="radio" name="sex" id="sex-female">
+                      <label for="sex-female">Female</label>
+                    </div>
+                    <div class="column">
+                      <input type="radio" name="sex" id="sex-other">
+                      <label for="sex-other">Other</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading is-radiusless has-background-light">
+                    <p class="subtitle">Visibility</p>
+                  </div>
+                  <div class="columns is-gapless is-mobile">
+                    <div class="column">
+                      <input type="radio" name="visibility" id="visibility-fullbody">
+                      <label for="visibility-fullbody">Full Body</label>
+                    </div>
+                    <div class="column">
+                      <input type="radio" name="visibility" id="visibility-upperbody">
+                      <label for="visibility-upperbody">Upper Body</label>
+                    </div>
+                    <div class="column">
+                      <input type="radio" name="visibility" id="visibility-lowerbody">
+                      <label for="visibility-lowerbody">Lower Body</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="panel-heading is-radiusless has-background-light">
+                    <p class="subtitle">Pose</p>
+                  </div>
+                  <div class="columns is-gapless is-mobile">
+                    <div class="column">
+                      <input type="radio" name="pose" id="pose-standing">
+                      <label for="pose-standing">Standing</label>
+                    </div>
+                    <div class="column">
+                      <input type="radio" name="pose" id="pose-sitting">
+                      <label for="pose-sitting">Sitting</label>
+                    </div>
+                    <div class="column">
+                      <input type="radio" name="pose" id="pose-lying">
+                      <label for="pose-lying">Lying</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="custom-tab-content custom-tab-head-body">
+                <div class="columns is-gapless is-mobile">
+                  <div class="column">
+                    <div class="panel-heading is-radiusless has-background-light">
+                      <p class="subtitle">Head</p>
+                    </div>
+                    <input type="radio" name="head" id="head-front">
+                    <label for="head-front">Facing Front</label>
+                    <input type="radio" name="head" id="head-back">
+                    <label for="head-back">Facing Back</label>
+                    <input type="radio" name="head" id="head-left">
+                    <label for="head-left">Facing Left</label>
+                    <input type="radio" name="head" id="head-partially-left">
+                    <label for="head-partially-left">Facing Partially Left</label>
+                    <input type="radio" name="head" id="head-right">
+                    <label for="head-right">Facing Right</label>
+                    <input type="radio" name="head" id="head-partially-right">
+                    <label for="head-partially-right">Facing Partially Right</label>
+                  </div>
+                  <div class="column">
+                    <div class="panel-heading is-radiusless has-background-light">
+                      <p class="subtitle">Body</p>
+                    </div>
+                    <input type="radio" name="body" id="body-front">
+                    <label for="body-front">Facing Front</label>
+                    <input type="radio" name="body" id="body-back">
+                    <label for="body-back">Facing Back</label>
+                    <input type="radio" name="body" id="body-left">
+                    <label for="body-left">Facing Left</label>
+                    <input type="radio" name="body" id="body-partially-left">
+                    <label for="body-partially-left">Facing Partially Left</label>
+                    <input type="radio" name="body" id="body-right">
+                    <label for="body-right">Facing Right</label>
+                    <input type="radio" name="body" id="body-partially-right">
+                    <label for="body-partially-right">Facing Partially Right</label>
+                  </div>
+                </div>
+              </div>
+              <div class="custom-tab-content custom-tab-hands">
+                <div class="columns is-gapless is-mobile">
+                  <div class="column">
+                    <div class="panel-heading is-radiusless has-background-light">
+                      <p class="subtitle">Left Hand</p>
+                    </div>
+                    <input type="radio" name="left-hand-pose" id="lh-pose-straight">
+                    <label for="lh-pose-straight">Straight</label>
+                    <input type="radio" name="left-hand-pose" id="lh-pose-folded">
+                    <label for="lh-pose-folded">Folded</label>
+                    <input type="radio" name="left-hand-elbow" id="lh-elbow-hp-sh">
+                    <label for="lh-elbow-hp-sh">Elbow is in between Hip and Shoulder</label>
+                    <input type="radio" name="left-hand-elbow" id="lh-elbow-sh-hd">
+                    <label for="lh-elbow-sh-hd">Elbow is in between Shoulder and Head</label>
+                    <input type="radio" name="left-hand-wrist" id="lh-wrist-kn-hp">
+                    <label for="lh-wrist-kn-hp">Wrist is in between Knee and Hip</label>
+                    <input type="radio" name="left-hand-wrist" id="lh-wrist-hp-sh">
+                    <label for="lh-wrist-hp-sh">Wrist is in between Hip and Shoulder</label>
+                    <input type="radio" name="left-hand-wrist" id="lh-wrist-sh-hd">
+                    <label for="lh-wrist-sh-hd">Wrist is in between Shoulder and Head</label>
+                    <input type="radio" name="left-hand-wrist" id="lh-wrist-above-hd">
+                    <label for="lh-wrist-above-hd">Wrist is above Head</label>
+                    <input type="radio" name="left-hand-direction" id="lh-direction-to-body">
+                    <label for="lh-direction-to-body">Pointing towards Body</label>
+                    <input type="radio" name="left-hand-direction" id="lh-direction-from-body">
+                    <label for="lh-direction-from-body">Pointing away from Body</label>
+                  </div>
+                  <div class="column">
+                    <div class="panel-heading is-radiusless has-background-light">
+                      <p class="subtitle">Right Hand</p>
+                    </div>
+                    <input type="radio" name="right-hand-pose" id="rh-pose-straight">
+                    <label for="rh-pose-straight">Straight</label>
+                    <input type="radio" name="right-hand-pose" id="rh-pose-folded">
+                    <label for="rh-pose-folded">Folded</label>
+                    <input type="radio" name="right-hand-elbow" id="rh-elbow-hp-sh">
+                    <label for="rh-elbow-hp-sh">Elbow is in between Hip and Shoulder</label>
+                    <input type="radio" name="right-hand-elbow" id="rh-elbow-sh-hd">
+                    <label for="rh-elbow-sh-hd">Elbow is in between Shoulder and Head</label>
+                    <input type="radio" name="right-hand-wrist" id="rh-wrist-kn-hp">
+                    <label for="rh-wrist-kn-hp">Wrist is in between Knee and Hip</label>
+                    <input type="radio" name="right-hand-wrist" id="rh-wrist-hp-sh">
+                    <label for="rh-wrist-hp-sh">Wrist is in between Hip and Shoulder</label>
+                    <input type="radio" name="right-hand-wrist" id="rh-wrist-sh-hd">
+                    <label for="rh-wrist-sh-hd">Wrist is in between Shoulder and Heap</label>
+                    <input type="radio" name="right-hand-wrist" id="rh-wrist-above-hd">
+                    <label for="rh-wrist-above-hd">Wrist is above Head</label>
+                    <input type="radio" name="right-hand-direction" id="rh-direction-to-body">
+                    <label for="rh-direction-to-body">Pointing towards Body</label>
+                    <input type="radio" name="right-hand-direction" id="rh-direction-from-body">
+                    <label for="rh-direction-from-body">Pointing away from Body</label>
+                  </div>
+                </div>
+              </div>
+              <div class="custom-tab-content custom-tab-legs">
+                <div class="columns is-gapless is-mobile">
+                  <div class="column">
+                    <div class="panel-heading is-radiusless has-background-light">
+                      <p class="subtitle">Left Leg</p>
+                    </div>
+                    <input type="radio" name="left-leg-pose" id="ll-pose-straight">
+                    <label for="ll-pose-straight">Straight</label>
+                    <input type="radio" name="left-leg-pose" id="ll-pose-forward">
+                    <label for="ll-pose-forward">Stepped Forward</label>
+                    <input type="radio" name="left-leg-pose" id="ll-pose-backward">
+                    <label for="ll-pose-backward">Stepped Backward</label>
+                    <input type="radio" name="left-leg-pose" id="ll-pose-away">
+                    <label for="ll-pose-away">Stepped Left (Away)</label>
+                    <input type="radio" name="left-leg-pose" id="ll-pose-crossed">
+                    <label for="ll-pose-crossed">Stepped Right (Crossed)</label>
+                    <input type="radio" name="left-leg-ankle" id="ll-ankle-on-ground">
+                    <label for="ll-ankle-on-ground">Ankle is on ground</label>
+                    <input type="radio" name="left-leg-ankle" id="ll-ankle-below-kn">
+                    <label for="ll-ankle-below-kn">Ankle is below Knee</label>
+                    <input type="radio" name="left-leg-ankle" id="ll-ankle-above-kn">
+                    <label for="ll-ankle-above-kn">Ankle is above Knee</label>
+                  </div>
+                  <div class="column">
+                    <div class="panel-heading is-radiusless has-background-light">
+                      <p class="subtitle">Right Leg</p>
+                    </div>
+                    <input type="radio" name="right-leg-pose" id="rl-pose-straight">
+                    <label for="rl-pose-straight">Straight</label>
+                    <input type="radio" name="right-leg-pose" id="rl-pose-forward">
+                    <label for="rl-pose-forward">Stepped Forward</label>
+                    <input type="radio" name="right-leg-pose" id="rl-pose-backward">
+                    <label for="rl-pose-backward">Stepped Backward</label>
+                    <input type="radio" name="right-leg-pose" id="rl-pose-away">
+                    <label for="rl-pose-away">Stepped Right (Away)</label>
+                    <input type="radio" name="right-leg-pose" id="rl-pose-crossed">
+                    <label for="rl-pose-crossed">Stepped Left (Crossed)</label>
+                    <input type="radio" name="right-leg-ankle" id="rl-ankle-on-ground">
+                    <label for="rl-ankle-on-ground">Ankle is on ground</label>
+                    <input type="radio" name="right-leg-ankle" id="rl-ankle-below-kn">
+                    <label for="rl-ankle-below-kn">Ankle is below Knee</label>
+                    <input type="radio" name="right-leg-ankle" id="rl-ankle-above-kn">
+                    <label for="rl-ankle-above-kn">Ankle is above Knee</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer has-background-dark custom-footer">
+      <div class="content">
+        <h6 class="subtitle has-text-light">Copyright&nbsp;<i class="far fa-copyright"></i>&nbsp;2020</h6>
+      </div>
+    </section>
+
+    <section class="notification is-radiusless has-text-centered custom-notification"></section>
+
+    <section class="modal is-active" id="login-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <div class="field has-addons custom-modal-container">
+          <div class="control has-icons-left is-expanded">
+            <input class="input is-large" type="password" id="access-key" placeholder="Enter access key">
+            <span class="icon is-left"><i class="fas fa-lock"></i></span>
+          </div>
+          <div class="control">
+            <button class="button is-large has-background-success has-text-white" id="button-login"><strong>Login</strong></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="static/js/index.js"></script>
+  </body>
+
+</html>

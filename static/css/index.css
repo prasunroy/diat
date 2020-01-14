@@ -1,0 +1,154 @@
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: 'Nunito', sans-serif;
+  scrollbar-width: none;    /* for Firefox */
+  -ms-overflow-style: none; /* for IE v10+ */
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #404040;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  background-color: transparent;
+}
+
+input[type=password]:focus {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+label {
+  display: block;
+  position: relative;
+  padding: 1rem 1rem 1rem 3rem;
+  line-height: 1;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  background: white;
+  font-size: 1rem;
+  font-weight: normal;
+  transition: all 0.5s ease;
+}
+
+label:first-of-type {
+  border: 0;
+}
+
+label:before {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  height: 16px;
+  width: 16px;
+  border: 0.25rem solid #c8c8c8;
+  border-radius: 50%;
+  content: '';
+}
+
+label:hover, label:focus, label:active, input:checked + label {
+  background: rgba(0, 0, 0, 0.1);
+  color: #dc788c;
+}
+
+label:hover:before, label:focus:before, label:active:before, input:checked + label:before {
+  background: white;
+  border-color: #dc788c;
+}
+
+input:checked + label:before {
+  border: none;
+  border-color: white;
+  background: #dc788c;
+}
+
+input:disabled + label {
+  cursor: not-allowed;
+  background: #c8c8c8;
+  color: rgba(0, 0, 0, .5);
+}
+
+input:disabled + label:before {
+  border-color: white;
+  background: white;
+}
+
+input:disabled + label:hover {
+  border-color: rgba(0, 0, 0, .1);
+}
+
+.custom-main {
+  flex: 1;
+}
+
+.custom-footer {
+  padding-top: 15px;
+  padding-bottom: 0px;
+}
+
+.custom-button {
+  margin: 0rem 0.5rem 0rem 0.5rem;
+  background: none;
+  border: none;
+  cursor: default;
+}
+
+.custom-box {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.custom-tab-content {
+  display: none;
+}
+
+.custom-notification {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+.custom-fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.custom-fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.custom-img-tinted {
+  filter: opacity(20%);
+  -webkit-filter: opacity(20%);
+  transition: all 0.5s ease;
+}
+
+.custom-modal-container {
+  margin: 1rem;
+  padding: 0rem;
+}
