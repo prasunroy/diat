@@ -1,5 +1,5 @@
-// Database controller
-let databaseController = class {
+// API access controller
+let apiAccessController = class {
     constructor() {
         this.url = 'https://diat-api.herokuapp.com';
         this.apiEndpointLogin = '/login';
@@ -38,6 +38,71 @@ let databaseController = class {
 };
 
 
+// Database controller
+let databaseController = class {
+    constructor() {
+        this.databaseModal = document.getElementById('database-modal');
+        this.databaseModalBody = document.querySelector('#database-modal .modal-card-body');
+        this.databaseModalCloseButton = document.querySelector('#database-modal .delete');
+        this.databaseID = null;
+        this.databaseChangeEvent = new Event('dbchange');
+        this.ondbchange = function() {};
+        this.init();
+    }
+
+    init() {
+        let self = this;
+        this.databaseModal.addEventListener('dbchange', function() {
+            self.ondbchange();
+        });
+        this.databaseModalCloseButton.addEventListener('click', function() {
+            self.hideDatabaseSelection();
+        });
+    }
+
+    showDatabaseSelection() {
+        this.databaseModal.classList.add('is-active');
+    }
+
+    hideDatabaseSelection() {
+        this.databaseModal.classList.remove('is-active');
+    }
+
+    removeAllDatabases() {
+        while(this.databaseModalBody.firstChild) {
+            this.databaseModalBody.firstChild.remove();
+        }
+    }
+
+    addDatabases(databases, activeDatabaseID) {
+        this.removeAllDatabases();
+        this.databaseID = activeDatabaseID;
+        databases.forEach(function(database) {
+            let self = this;
+            let radio = document.createElement('input');
+            let label = document.createElement('label');
+            radio.setAttribute('type', 'radio');
+            radio.setAttribute('name', 'database');
+            radio.id = database.database_id;
+            if(radio.id == activeDatabaseID) {
+                radio.checked = true;
+            }
+            radio.addEventListener('click', function() {
+                if(this.id != self.databaseID) {
+                    self.databaseID = this.id;
+                    self.databaseModal.dispatchEvent(self.databaseChangeEvent);
+                }
+                self.hideDatabaseSelection();
+            });
+            label.htmlFor = database.database_id;
+            label.innerHTML = `${database.database_name} <span class='is-pulled-right is-hidden-mobile'>${database.images_remaining} images remaining</span>`;
+            this.databaseModalBody.appendChild(radio);
+            this.databaseModalBody.appendChild(label);
+        }, this);
+    }
+};
+
+
 // Annotation controller
 let annotationController = class {
     constructor() {
@@ -53,7 +118,7 @@ let annotationController = class {
     getAllOptions() {
         let options = {};
         this.allOptions.forEach(function(option) {
-            options[option.id] = option.checked;
+            options[option.id.replace(/-/g, '_')] = option.checked;
         });
         return options;
     }
@@ -101,8 +166,10 @@ let buttonController = (function() {
     let saveButton = document.getElementById('button-save');
     let deleteButton = document.getElementById('button-delete');
     let optionsButton = document.getElementById('button-options');
+    let userInfoField = document.getElementById('user-info');
     let imageToRender = document.getElementById('image');
     let imageToLoad = new Image();
+    let apiController = new apiAccessController();
     let dbController = new databaseController();
     let annoController = new annotationController();
     let noteController = new notificationController();
@@ -125,13 +192,14 @@ let buttonController = (function() {
         let data = JSON.stringify({
             'access_key': accessKeyField.value
         });
-        let xhr = dbController.createLoginRequest();
+        let xhr = apiController.createLoginRequest();
         xhr.onload = function() {
             let response = JSON.parse(this.response);
             if(this.status == 200 && response.success) {
                 // success
                 accessKey = response.access_key;
                 buttonLocked = false;
+                userInfoField.innerHTML = '<i class="fas fa-user-circle"></i>&nbsp;&nbsp;' + response.allocated_to;
                 loginModal.classList.remove('is-active');
                 noteController.notify('LOGGED IN', ['is-link'], 2500);
             }
@@ -166,13 +234,18 @@ let buttonController = (function() {
             let data = JSON.stringify({
                 'access_key': accessKey
             });
-            let xhr = dbController.createConnectRequest();
+            let xhr = apiController.createConnectRequest();
             xhr.onload = function() {
                 let response = JSON.parse(this.response);
                 if(this.status == 200 && response.success) {
                     // success
-                    databaseID = response.databases[0].database_id;
-                    noteController.notify('CONNECTED', ['is-link'], 2500);
+                    dbController.ondbchange = function() {
+                        databaseID = dbController.databaseID;
+                        noteController.notify('CONNECTED', ['is-link'], 2500);
+                        nextButton.click();
+                    };
+                    dbController.addDatabases(response.databases, databaseID);
+                    dbController.showDatabaseSelection();
                 }
                 else {
                     // server error
@@ -181,9 +254,6 @@ let buttonController = (function() {
                 }
                 el.classList.remove('is-loading');
                 buttonLocked = false;
-                if(databaseID) {
-                    nextButton.click();
-                }
             };
             xhr.onerror = function() {
                 // connection error
@@ -206,7 +276,7 @@ let buttonController = (function() {
                 'access_key': accessKey,
                 'database_id': databaseID
             });
-            let xhr = dbController.createReadRequest();
+            let xhr = apiController.createReadRequest();
             xhr.onload = function() {
                 let response = JSON.parse(this.response);
                 if(this.status == 200 && response.success) {
@@ -262,7 +332,7 @@ let buttonController = (function() {
                 'image_id': imageID,
                 'annotation': annoController.getAllOptions()
             });
-            let xhr = dbController.createUpdateRequest();
+            let xhr = apiController.createUpdateRequest();
             xhr.onload = function() {
                 let response = JSON.parse(this.response);
                 if(this.status == 200 && response.success) {
@@ -299,7 +369,7 @@ let buttonController = (function() {
                 'database_id': databaseID,
                 'image_id': imageID
             });
-            let xhr = dbController.createDeleteRequest();
+            let xhr = apiController.createDeleteRequest();
             xhr.onload = function() {
                 let response = JSON.parse(this.response);
                 if(this.status == 200 && response.success) {

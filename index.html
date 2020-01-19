@@ -14,6 +14,7 @@
   <body>
     <section class="hero is-small is-primary is-bold">
       <div class="hero-body">
+        <p class="is-pulled-right is-hidden-mobile" id="user-info"></p>
         <h1 class="title">D I A T</h1>
         <h1 class="subtitle">Descriptive Image Annotation Tool</h1>
       </div>
@@ -56,6 +57,7 @@
             </div>
             <div class="panel-tabs">
               <a class="custom-tab-link">General</a>
+              <a class="custom-tab-link">View</a>
               <a class="custom-tab-link">Head & Body</a>
               <a class="custom-tab-link">Hands</a>
               <a class="custom-tab-link">Legs</a>
@@ -120,6 +122,260 @@
                   </div>
                 </div>
               </div>
+              <div class="custom-tab-content custom-tab-view">
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Nose</p>
+                      </div>
+                      <input type="radio" name="nose" id="nose-visible">
+                      <label for="nose-visible">Visible</label>
+                      <input type="radio" name="nose" id="nose-occluded">
+                      <label for="nose-occluded">Occluded</label>
+                      <input type="radio" name="nose" id="nose-concealed">
+                      <label for="nose-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Neck</p>
+                      </div>
+                      <input type="radio" name="neck" id="neck-visible">
+                      <label for="neck-visible">Visible</label>
+                      <input type="radio" name="neck" id="neck-occluded">
+                      <label for="neck-occluded">Occluded</label>
+                      <input type="radio" name="neck" id="neck-concealed">
+                      <label for="neck-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Eye</p>
+                      </div>
+                      <input type="radio" name="left-eye" id="left-eye-visible">
+                      <label for="left-eye-visible">Visible</label>
+                      <input type="radio" name="left-eye" id="left-eye-occluded">
+                      <label for="left-eye-occluded">Occluded</label>
+                      <input type="radio" name="left-eye" id="left-eye-concealed">
+                      <label for="left-eye-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Eye</p>
+                      </div>
+                      <input type="radio" name="right-eye" id="right-eye-visible">
+                      <label for="right-eye-visible">Visible</label>
+                      <input type="radio" name="right-eye" id="right-eye-occluded">
+                      <label for="right-eye-occluded">Occluded</label>
+                      <input type="radio" name="right-eye" id="right-eye-concealed">
+                      <label for="right-eye-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Ear</p>
+                      </div>
+                      <input type="radio" name="left-ear" id="left-ear-visible">
+                      <label for="left-ear-visible">Visible</label>
+                      <input type="radio" name="left-ear" id="left-ear-occluded">
+                      <label for="left-ear-occluded">Occluded</label>
+                      <input type="radio" name="left-ear" id="left-ear-concealed">
+                      <label for="left-ear-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Ear</p>
+                      </div>
+                      <input type="radio" name="right-ear" id="right-ear-visible">
+                      <label for="right-ear-visible">Visible</label>
+                      <input type="radio" name="right-ear" id="right-ear-occluded">
+                      <label for="right-ear-occluded">Occluded</label>
+                      <input type="radio" name="right-ear" id="right-ear-concealed">
+                      <label for="right-ear-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Shoulder</p>
+                      </div>
+                      <input type="radio" name="left-shoulder" id="left-shoulder-visible">
+                      <label for="left-shoulder-visible">Visible</label>
+                      <input type="radio" name="left-shoulder" id="left-shoulder-occluded">
+                      <label for="left-shoulder-occluded">Occluded</label>
+                      <input type="radio" name="left-shoulder" id="left-shoulder-concealed">
+                      <label for="left-shoulder-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Shoulder</p>
+                      </div>
+                      <input type="radio" name="right-shoulder" id="right-shoulder-visible">
+                      <label for="right-shoulder-visible">Visible</label>
+                      <input type="radio" name="right-shoulder" id="right-shoulder-occluded">
+                      <label for="right-shoulder-occluded">Occluded</label>
+                      <input type="radio" name="right-shoulder" id="right-shoulder-concealed">
+                      <label for="right-shoulder-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Elbow</p>
+                      </div>
+                      <input type="radio" name="left-elbow" id="left-elbow-visible">
+                      <label for="left-elbow-visible">Visible</label>
+                      <input type="radio" name="left-elbow" id="left-elbow-occluded">
+                      <label for="left-elbow-occluded">Occluded</label>
+                      <input type="radio" name="left-elbow" id="left-elbow-concealed">
+                      <label for="left-elbow-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Elbow</p>
+                      </div>
+                      <input type="radio" name="right-elbow" id="right-elbow-visible">
+                      <label for="right-elbow-visible">Visible</label>
+                      <input type="radio" name="right-elbow" id="right-elbow-occluded">
+                      <label for="right-elbow-occluded">Occluded</label>
+                      <input type="radio" name="right-elbow" id="right-elbow-concealed">
+                      <label for="right-elbow-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Wrist</p>
+                      </div>
+                      <input type="radio" name="left-wrist" id="left-wrist-visible">
+                      <label for="left-wrist-visible">Visible</label>
+                      <input type="radio" name="left-wrist" id="left-wrist-occluded">
+                      <label for="left-wrist-occluded">Occluded</label>
+                      <input type="radio" name="left-wrist" id="left-wrist-concealed">
+                      <label for="left-wrist-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Wrist</p>
+                      </div>
+                      <input type="radio" name="right-wrist" id="right-wrist-visible">
+                      <label for="right-wrist-visible">Visible</label>
+                      <input type="radio" name="right-wrist" id="right-wrist-occluded">
+                      <label for="right-wrist-occluded">Occluded</label>
+                      <input type="radio" name="right-wrist" id="right-wrist-concealed">
+                      <label for="right-wrist-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Hip</p>
+                      </div>
+                      <input type="radio" name="left-hip" id="left-hip-visible">
+                      <label for="left-hip-visible">Visible</label>
+                      <input type="radio" name="left-hip" id="left-hip-occluded">
+                      <label for="left-hip-occluded">Occluded</label>
+                      <input type="radio" name="left-hip" id="left-hip-concealed">
+                      <label for="left-hip-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Hip</p>
+                      </div>
+                      <input type="radio" name="right-hip" id="right-hip-visible">
+                      <label for="right-hip-visible">Visible</label>
+                      <input type="radio" name="right-hip" id="right-hip-occluded">
+                      <label for="right-hip-occluded">Occluded</label>
+                      <input type="radio" name="right-hip" id="right-hip-concealed">
+                      <label for="right-hip-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Knee</p>
+                      </div>
+                      <input type="radio" name="left-knee" id="left-knee-visible">
+                      <label for="left-knee-visible">Visible</label>
+                      <input type="radio" name="left-knee" id="left-knee-occluded">
+                      <label for="left-knee-occluded">Occluded</label>
+                      <input type="radio" name="left-knee" id="left-knee-concealed">
+                      <label for="left-knee-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Knee</p>
+                      </div>
+                      <input type="radio" name="right-knee" id="right-knee-visible">
+                      <label for="right-knee-visible">Visible</label>
+                      <input type="radio" name="right-knee" id="right-knee-occluded">
+                      <label for="right-knee-occluded">Occluded</label>
+                      <input type="radio" name="right-knee" id="right-knee-concealed">
+                      <label for="right-knee-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Left Ankle</p>
+                      </div>
+                      <input type="radio" name="left-ankle" id="left-ankle-visible">
+                      <label for="left-ankle-visible">Visible</label>
+                      <input type="radio" name="left-ankle" id="left-ankle-occluded">
+                      <label for="left-ankle-occluded">Occluded</label>
+                      <input type="radio" name="left-ankle" id="left-ankle-concealed">
+                      <label for="left-ankle-concealed">Concealed</label>
+                    </div>
+                  </div>
+                  <div class="column">
+                    <div class="panel">
+                      <div class="panel-heading is-radiusless has-background-light">
+                        <p class="subtitle">Right Ankle</p>
+                      </div>
+                      <input type="radio" name="right-ankle" id="right-ankle-visible">
+                      <label for="right-ankle-visible">Visible</label>
+                      <input type="radio" name="right-ankle" id="right-ankle-occluded">
+                      <label for="right-ankle-occluded">Occluded</label>
+                      <input type="radio" name="right-ankle" id="right-ankle-concealed">
+                      <label for="right-ankle-concealed">Concealed</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="custom-tab-content custom-tab-head-body">
                 <div class="columns is-gapless is-mobile">
                   <div class="column">
@@ -168,10 +424,12 @@
                     <label for="lh-pose-straight">Straight</label>
                     <input type="radio" name="left-hand-pose" id="lh-pose-folded">
                     <label for="lh-pose-folded">Folded</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="left-hand-elbow" id="lh-elbow-hp-sh">
                     <label for="lh-elbow-hp-sh">Elbow is in between Hip and Shoulder</label>
                     <input type="radio" name="left-hand-elbow" id="lh-elbow-sh-hd">
                     <label for="lh-elbow-sh-hd">Elbow is in between Shoulder and Head</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="left-hand-wrist" id="lh-wrist-kn-hp">
                     <label for="lh-wrist-kn-hp">Wrist is in between Knee and Hip</label>
                     <input type="radio" name="left-hand-wrist" id="lh-wrist-hp-sh">
@@ -180,6 +438,7 @@
                     <label for="lh-wrist-sh-hd">Wrist is in between Shoulder and Head</label>
                     <input type="radio" name="left-hand-wrist" id="lh-wrist-above-hd">
                     <label for="lh-wrist-above-hd">Wrist is above Head</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="left-hand-direction" id="lh-direction-to-body">
                     <label for="lh-direction-to-body">Pointing towards Body</label>
                     <input type="radio" name="left-hand-direction" id="lh-direction-from-body">
@@ -193,10 +452,12 @@
                     <label for="rh-pose-straight">Straight</label>
                     <input type="radio" name="right-hand-pose" id="rh-pose-folded">
                     <label for="rh-pose-folded">Folded</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="right-hand-elbow" id="rh-elbow-hp-sh">
                     <label for="rh-elbow-hp-sh">Elbow is in between Hip and Shoulder</label>
                     <input type="radio" name="right-hand-elbow" id="rh-elbow-sh-hd">
                     <label for="rh-elbow-sh-hd">Elbow is in between Shoulder and Head</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="right-hand-wrist" id="rh-wrist-kn-hp">
                     <label for="rh-wrist-kn-hp">Wrist is in between Knee and Hip</label>
                     <input type="radio" name="right-hand-wrist" id="rh-wrist-hp-sh">
@@ -205,6 +466,7 @@
                     <label for="rh-wrist-sh-hd">Wrist is in between Shoulder and Heap</label>
                     <input type="radio" name="right-hand-wrist" id="rh-wrist-above-hd">
                     <label for="rh-wrist-above-hd">Wrist is above Head</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="right-hand-direction" id="rh-direction-to-body">
                     <label for="rh-direction-to-body">Pointing towards Body</label>
                     <input type="radio" name="right-hand-direction" id="rh-direction-from-body">
@@ -228,6 +490,7 @@
                     <label for="ll-pose-away">Stepped Left (Away)</label>
                     <input type="radio" name="left-leg-pose" id="ll-pose-crossed">
                     <label for="ll-pose-crossed">Stepped Right (Crossed)</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="left-leg-ankle" id="ll-ankle-on-ground">
                     <label for="ll-ankle-on-ground">Ankle is on ground</label>
                     <input type="radio" name="left-leg-ankle" id="ll-ankle-below-kn">
@@ -249,6 +512,7 @@
                     <label for="rl-pose-away">Stepped Right (Away)</label>
                     <input type="radio" name="right-leg-pose" id="rl-pose-crossed">
                     <label for="rl-pose-crossed">Stepped Left (Crossed)</label>
+                    <div class="panel-heading is-radiusless has-background-light"></div>
                     <input type="radio" name="right-leg-ankle" id="rl-ankle-on-ground">
                     <label for="rl-ankle-on-ground">Ankle is on ground</label>
                     <input type="radio" name="right-leg-ankle" id="rl-ankle-below-kn">
@@ -270,8 +534,6 @@
       </div>
     </section>
 
-    <section class="notification is-radiusless has-text-centered custom-notification"></section>
-
     <section class="modal is-active" id="login-modal">
       <div class="modal-background"></div>
       <div class="modal-content">
@@ -285,6 +547,21 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="modal" id="database-modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <div class="modal-card-head has-background-dark">
+          <div class="modal-card-title has-text-light">Connect to a database</div>
+          <button class="delete is-medium"></button>
+        </div>
+        <div class="modal-card-body custom-modal-body"></div>
+        <div class="modal-card-foot"></div>
+      </div>
+    </section>
+
+    <section class="notification is-radiusless has-text-centered custom-notification">
     </section>
 
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>

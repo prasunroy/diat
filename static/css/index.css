@@ -152,3 +152,8 @@ input:disabled + label:hover {
   margin: 1rem;
   padding: 0rem;
 }
+
+.custom-modal-body {
+  margin: 0rem;
+  padding: 0rem;
+}
