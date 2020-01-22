@@ -63,7 +63,7 @@ def login():
 def connect():
     access_key = request.json['access_key']
     if validate_access_key(access_key):
-        collection_names = list(mongo.db.list_collection_names())
+        collection_names = sorted(list(mongo.db.list_collection_names()))
         databases = []
         for collection_name in collection_names:
             if collection_name in EXCLUDED_COLLECTION_NAMES:
