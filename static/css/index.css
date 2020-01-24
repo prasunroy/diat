@@ -39,7 +39,7 @@ label {
   position: relative;
   padding: 1rem 1rem 1rem 3rem;
   line-height: 1;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
@@ -47,10 +47,6 @@ label {
   font-size: 1rem;
   font-weight: normal;
   transition: all 0.5s ease;
-}
-
-label:first-of-type {
-  border: 0;
 }
 
 label:before {
@@ -112,7 +108,12 @@ input:disabled + label:hover {
 }
 
 .custom-box {
+  height: calc(100vh - 232px);
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.custom-tab-container {
+  height: calc(100vh - 268px);
 }
 
 .custom-tab-content {
@@ -156,4 +157,25 @@ input:disabled + label:hover {
 .custom-modal-body {
   margin: 0rem;
   padding: 0rem;
+}
+
+.custom-scroll-area {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;    /* for Firefox */
+  -ms-overflow-style: none; /* for IE v10+ */
+}
+
+.custom-scroll-area::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+.custom-scroll-area::-webkit-scrollbar-thumb {
+  background-color: #404040;
+}
+
+.custom-scroll-area::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background-color: transparent;
 }
