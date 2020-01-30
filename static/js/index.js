@@ -7,6 +7,7 @@ let apiAccessController = class {
         this.apiEndpointRead = '/read';
         this.apiEndpointUpdate = '/update';
         this.apiEndpointDelete = '/delete';
+        this.apiEndpointStatus = '/status';
     }
 
     createXMLHttpRequest(method, url) {
@@ -34,6 +35,10 @@ let apiAccessController = class {
 
     createDeleteRequest() {
         return this.createXMLHttpRequest('POST', this.url + this.apiEndpointDelete);
+    }
+
+    createStatusRequest() {
+        return this.createXMLHttpRequest('POST', this.url + this.apiEndpointStatus);
     }
 };
 
@@ -165,7 +170,7 @@ let buttonController = (function() {
     let nextButton = document.getElementById('button-next');
     let saveButton = document.getElementById('button-save');
     let deleteButton = document.getElementById('button-delete');
-    let optionsButton = document.getElementById('button-options');
+    let statusButton = document.getElementById('button-status');
     let userInfoField = document.getElementById('user-info');
     let imageToRender = document.getElementById('image');
     let imageToLoad = new Image();
@@ -400,11 +405,40 @@ let buttonController = (function() {
         }
     });
 
-    // options button
-    optionsButton.addEventListener('click', function() {
-        if(!buttonLocked) {
+    // status button
+    statusButton.addEventListener('click', function() {
+        if(!buttonLocked && databaseID) {
             buttonLocked = true;
-            buttonLocked = false;
+            this.classList.add('is-loading');
+            let el = this;
+            let data = JSON.stringify({
+                'access_key': accessKey,
+                'database_id': databaseID
+            });
+            let xhr = apiController.createStatusRequest();
+            xhr.onload = function() {
+                let response = JSON.parse(this.response);
+                if(this.status == 200 && response.success) {
+                    // success
+                    let statusMessage = `UPDATED&nbsp;&nbsp;<strong>${response.updated}</strong>&nbsp;&nbsp;&nbsp;&nbsp;DELETED&nbsp;&nbsp;<strong>${response.deleted}</strong>`;
+                    noteController.notify(statusMessage, ['is-link'], 2500);
+                }
+                else {
+                    // server error
+                    console.log('ERROR: statusButton ->', this.status, response.success);
+                    noteController.notify('INTERNAL SERVER ERROR', ['is-danger'], 2500);
+                }
+                el.classList.remove('is-loading');
+                buttonLocked = false;
+            };
+            xhr.onerror = function() {
+                // connection error
+                console.log('ERROR: statusButton ->', this.status);
+                noteController.notify('CONNECTION TIMEOUT', ['is-danger'], 2500);
+                el.classList.remove('is-loading');
+                buttonLocked = false;
+            };
+            xhr.send(data);
         }
     });
 })();

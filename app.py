@@ -122,6 +122,18 @@ def delete():
     return jsonify({'success': False})
 
 
+@app.route('/status', methods=['POST'])
+def status():
+    access_key = request.json['access_key']
+    collection_name = request.json['database_id']
+    if validate_access_key(access_key) and collection_name not in EXCLUDED_COLLECTION_NAMES:
+        collection = mongo.db.get_collection(collection_name)
+        updated = collection.count_documents({'updated_by': access_key, 'deleted_by': ''})
+        deleted = collection.count_documents({'deleted_by': access_key})
+        return jsonify({'success': True, 'updated': updated, 'deleted': deleted})
+    return jsonify({'success': False})
+
+
 # run application
 if __name__ == '__main__':
     app.run()
